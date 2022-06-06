@@ -4,7 +4,9 @@ import "./JobList.css";
 
 const JobList = ({ currentUser }) => {
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
-  const [jobsApplied, setJobsApplied] = useState(parsedJobs);
+  const [jobsApplied, setJobsApplied] = useState(
+    parsedJobs ? parsedJobs : true
+  );
   const [jobs, setJobs] = useState([{}]);
   useEffect(() => {
     const getJobs = async () => {
@@ -51,9 +53,12 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {checkIfAppliedToJob(job.id, jobsApplied.user.applications) &&
-              job.id &&
-              currentUser.applications ? (
+              {!jobsApplied ? null : checkIfAppliedToJob(
+                  job.id,
+                  jobsApplied.user.applications
+                ) &&
+                job.id &&
+                currentUser.applications ? (
                 <td className="JobList-table-body-status-applied">
                   <p>Applied✔️</p>
                 </td>
