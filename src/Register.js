@@ -36,7 +36,7 @@ const Register = ({ BASE_URL, setCurrUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const createUser = async () => {
-      let newUser = await axios.post(`${BASE_URL}auth/register`, {
+      let newUser = await axios.post(`${BASE_URL}/auth/register`, {
         username: formData.username,
         password: formData.password,
         firstName: formData.firstName,

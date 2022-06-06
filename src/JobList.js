@@ -7,6 +7,10 @@ const JobList = ({ currentUser }) => {
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   const [jobsApplied, setJobsApplied] = useState(parsedJobs);
   const [jobs, setJobs] = useState([{}]);
+  console.log("WTF");
+  console.log(jobsApplied);
+  console.log(currentUser.applications);
+  console.log("WTF");
   useEffect(() => {
     const getJobs = async () => {
       let res = await JoblyApi.getAllJobs();
@@ -14,8 +18,9 @@ const JobList = ({ currentUser }) => {
     };
     getJobs();
   }, []);
-  console.log(currentUser.applications);
+
   console.log(jobs);
+
   const checkIfAppliedToJob = (data1, data2) => {
     let jobsApplied = data1;
     let userApplications = data2;
@@ -28,6 +33,7 @@ const JobList = ({ currentUser }) => {
       return false;
     }
   };
+
   return (
     <div>
       <h1 className="JobList-title">Job List</h1>
@@ -54,9 +60,12 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {checkIfAppliedToJob(job.id, jobsApplied.user.applications) &&
-              job.id &&
-              currentUser.applications ? (
+              {!jobsApplied ? null : checkIfAppliedToJob(
+                  job.id,
+                  jobsApplied.user.applications
+                ) &&
+                job.id &&
+                currentUser.applications ? (
                 <td className="JobList-table-body-status-applied">
                   <p>Applied✔️</p>
                 </td>
