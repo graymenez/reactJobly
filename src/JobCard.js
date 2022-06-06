@@ -7,9 +7,7 @@ const JobCard = ({ job, currentUser }) => {
   const navigate = useNavigate();
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   const [isLoading, setIsLoading] = useState(true);
-  const [jobsApplied, setJobsApplied] = useState(
-    parsedJobs ? parsedJobs : true
-  );
+  const [jobsApplied, setJobsApplied] = useState(parsedJobs);
   const token = localStorage.getItem("_token");
   const username = localStorage.getItem("_currUsername");
 
