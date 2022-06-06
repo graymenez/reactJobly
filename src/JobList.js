@@ -8,6 +8,7 @@ const JobList = ({ currentUser }) => {
   const [jobsApplied, setJobsApplied] = useState(
     parsedJobs ? parsedJobs : userD
   );
+  console.log(userD);
   const [jobs, setJobs] = useState([{}]);
   useEffect(() => {
     const getJobs = async () => {
