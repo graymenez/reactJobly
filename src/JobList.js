@@ -56,7 +56,15 @@ const JobList = ({ currentUser }) => {
               {!jobsApplied ? null : !jobsApplied.user.applications ? (
                 checkIfAppliedToJob(job.id) &&
                 job.id &&
-                currentUser.applications
+                currentUser.applications ? (
+                  <td className="JobList-table-body-status-applied">
+                    <p>Applied✔️</p>
+                  </td>
+                ) : (
+                  <td className="JobList-table-body-status-not-applied">
+                    <p>Not Applied</p>
+                  </td>
+                )
               ) : checkIfAppliedToJob(job.id, jobsApplied.user.applications) &&
                 job.id &&
                 currentUser.applications ? (
