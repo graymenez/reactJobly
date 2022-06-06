@@ -5,7 +5,6 @@ import "./JobList.css";
 const JobList = ({ currentUser }) => {
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   let userD = JSON.parse(localStorage.getItem("_userD"));
-  let token = localStorage.getItem("_token");
   const [jobsApplied, setJobsApplied] = useState(parsedJobs);
   console.log(userD);
   const [jobs, setJobs] = useState([{}]);
@@ -54,23 +53,7 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {userD === null ? (
-                <td className="JobList-table-body-status-applied">
-                  <p>Login to Apply</p>
-                </td>
-              ) : !jobsApplied ? (
-                checkIfAppliedToJob(job.id) &&
-                job.id &&
-                currentUser.applications ? (
-                  <td className="JobList-table-body-status-applied">
-                    <p>Applied✔️</p>
-                  </td>
-                ) : (
-                  <td className="JobList-table-body-status-not-applied">
-                    <p>Not Applied</p>
-                  </td>
-                )
-              ) : !jobsApplied.user.applications ? (
+              {!jobsApplied ? null : !jobsApplied.user.applications ? (
                 checkIfAppliedToJob(job.id) &&
                 job.id &&
                 currentUser.applications ? (
