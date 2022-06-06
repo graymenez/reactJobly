@@ -16,7 +16,7 @@ const JobList = ({ currentUser }) => {
     getJobs();
   }, []);
   console.log(userD.applications);
-  const checkIfAppliedToJob = (data1, data2) => {
+  const checkIfAppliedToJob = (data1, data2 = userD.applications) => {
     let jobsApplied = data1;
     let userApplications = data2;
     let results = userApplications.find((job) => job === jobsApplied);
@@ -53,7 +53,7 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {!jobsApplied ? (
+              {!jobsApplied ? null : !jobsApplied.user.applications ? (
                 checkIfAppliedToJob(job.id) &&
                 job.id &&
                 currentUser.applications
