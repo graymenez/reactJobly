@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useEffect, useState } from "react";
+import MainRoutes from "./MainRoutes";
+import getUser from "./GetUser";
 function App() {
+  const userToken = localStorage.getItem("_token");
+  const [currentUser, setCurrentUser] = useState(false);
+  const [token, setToken] = useState(userToken);
+  /** If there is a token, call getUser() funtion which will get the current users details
+   * Then save the current users details to currentUser state
+   */
+  useEffect(() => {
+    if (token) {
+      let setUser = async () => {
+        let user = await getUser();
+        setCurrentUser(user);
+      };
+      setUser();
+    } else {
+      console.log("logged out!");
+    }
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainRoutes token={token} currentUser={currentUser} />
     </div>
   );
 }

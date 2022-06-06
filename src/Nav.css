@@ -1,0 +1,35 @@
+.Nav {
+  padding-top: 30px;
+  background-color: rgba(0, 0, 0, 0.763);
+  width: 100%;
+}
+a {
+  position: relative;
+  bottom: 2vh;
+  margin-left: 5%;
+  color: aliceblue;
+  font-size: 2vw;
+  text-decoration: none;
+}
+a:first-child {
+  padding-left: 50%;
+}
+.active {
+  text-decoration: underline;
+}
+img {
+  position: absolute;
+  padding: 0%;
+  margin: 0%;
+  width: 4%;
+  right: 95%;
+  bottom: 92%;
+}
+#logoImage {
+  cursor: pointer;
+  transition: 0.4s;
+}
+#logoImage:hover {
+  transition: 0.3s;
+  width: 4.2%;
+}

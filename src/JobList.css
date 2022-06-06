@@ -1,0 +1,40 @@
+.JobList {
+  border-collapse: collapse;
+  border: 0.09em solid black;
+  margin: 3% 10% 10% 10%;
+}
+.JobList-table-head tr th {
+  border: 00.09em solid black;
+  font-size: 1em;
+}
+.JobList-table-body {
+  border: 0.09em solid black;
+}
+.JobList-table-body tr td {
+  border: 0.09em solid black;
+  width: 25%;
+  padding: 1%;
+}
+.JobList-table-body tr td:first-child {
+  width: 35%;
+}
+
+.JobList-table-body-link a {
+  padding: 0%;
+  border-radius: 4px;
+  padding: 0px 4px 0px 4px;
+  background-color: rgb(89, 162, 241);
+  position: relative;
+  top: 0.05px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 1em;
+}
+.JobList-table-body-status-applied p {
+  margin: 0px 50px 0px 50px;
+  color: rgb(150, 150, 245);
+}
+.JobList-table-body-status-not-applied p {
+  margin: 0px 50px 0px 50px;
+  color: rgb(20, 20, 250);
+}
