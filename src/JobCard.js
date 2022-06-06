@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
 import applyToJob from "./applyToJob";
-import refresh from "./refresh";
 import "./JobCard.css";
 const JobCard = ({ job, currentUser }) => {
   const navigate = useNavigate();
@@ -42,10 +41,8 @@ const JobCard = ({ job, currentUser }) => {
     let userApplications = data2;
     let results = userApplications.find((job) => job === jobsApplied);
     if (results) {
-      console.log(true);
       return true;
     } else {
-      console.log(false);
       return false;
     }
   };
@@ -74,34 +71,11 @@ const JobCard = ({ job, currentUser }) => {
               Applied! ✔️
             </button>
           ) : (
-            <button
-              style={{
-                background: "none",
-                border: "none",
-                backgroundColor: "rgb(249, 254, 255)",
-                boxShadow: "0px 1px 1px 0px grey",
-                padding: "5px",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-              onClick={apply}
-            >
+            <button id="not-applied" onClick={apply}>
               Apply 🗎
             </button>
           )}
-          <button
-            style={{
-              background: "none",
-              border: "none",
-              backgroundColor: "#32CBF1",
-              boxShadow: "0px 2px 2px 0px grey",
-              padding: "5px",
-              marginLeft: "10px",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-            onClick={() => navigate(-1)}
-          >
+          <button className="goBackButton" onClick={() => navigate(-1)}>
             Go Back ⮨
           </button>
         </div>

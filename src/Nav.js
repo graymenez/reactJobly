@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import img from "./letter-j-icon-png-21786.png";
+import refresh from "./refresh";
 
 const Nav = ({ currentUser }) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Nav = ({ currentUser }) => {
         <nav className="Nav">
           <img
             id="logoImage"
-            onClick={() => window.location.reload(navigate("/"))}
+            onClick={() => refresh(navigate("/"))}
             src={img}
           />
 

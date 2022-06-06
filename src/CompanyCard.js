@@ -1,9 +1,6 @@
 import React from "react";
 
 const CompanyCard = ({ companyDetails }) => {
-  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-  console.log(companyDetails);
-  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   return (
     <div className="CompanyCard">
       <h1>{companyDetails.name}</h1>

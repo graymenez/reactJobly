@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import refresh from "./refresh";
 
 const Logout = () => {
   let navigate = useNavigate();
   useEffect(() => {
     localStorage.clear();
-    window.location.reload(navigate("/"));
+    refresh(navigate("/"));
   }, []);
-  const log = () => {
-    alert("sorry no token");
-  };
 };
 export default Logout;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "./api";
+import refresh from "./refresh";
 
 const EditFrom = ({ token, currentUser }) => {
   const INITIAL_STATE = {
@@ -41,7 +42,7 @@ const EditFrom = ({ token, currentUser }) => {
         dataOption: e.target.id,
         dataValue: formData.firstName,
       });
-      window.location.reload(false);
+      refresh();
       //  console.log(e.target.id);
     } else if (e.target.id === "lastName") {
       setSubmitted(true);
@@ -49,21 +50,21 @@ const EditFrom = ({ token, currentUser }) => {
         dataOption: e.target.id,
         dataValue: formData.lastName,
       });
-      window.location.reload(false);
+      refresh();
     } else if (e.target.id === "password") {
       setSubmitted(true);
       setData({
         dataOption: e.target.id,
         dataValue: formData.password,
       });
-      window.location.reload(false);
+      refresh();
     } else if (e.target.id === "email") {
       setSubmitted(true);
       setData({
         dataOption: e.target.id,
         dataValue: formData.email,
       });
-      window.location.reload(false);
+      refresh();
     }
   };
   return (

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import refresh from "./refresh";
 
 const Login = ({ BASE_URL }) => {
   // Sets INITIAL_STATE
@@ -34,7 +35,7 @@ const Login = ({ BASE_URL }) => {
     let token = res.data.token;
     localStorage.setItem("_token", token);
     localStorage.setItem("_currUsername", formData.username);
-    window.location.reload(navigate("/"));
+    refresh(navigate("/"));
   };
   return (
     <div>

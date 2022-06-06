@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import JoblyApi from "./api";
 const Companies = ({ token, currentUser }) => {
   const [companies, setCompanies] = useState([{}]);
@@ -13,9 +13,6 @@ const Companies = ({ token, currentUser }) => {
     };
     getData();
   }, []);
-  console.log("%%%%%%%%%%%%%%%% Companies %%%%%%%%%%%%%%%%");
-  console.log(currentUser);
-  console.log("%%%%%%%%%%%%%%%% Companies %%%%%%%%%%%%%%%%");
   return (
     <div>
       <h1>All Companies</h1>

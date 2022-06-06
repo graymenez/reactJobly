@@ -16,8 +16,6 @@ function App() {
         setCurrentUser(user);
       };
       setUser();
-    } else {
-      console.log("logged out!");
     }
   }, []);
 

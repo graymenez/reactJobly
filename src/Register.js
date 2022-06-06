@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "./api";
+import refresh from "./refresh";
 
 const Register = ({ BASE_URL, setCurrUser }) => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Register = ({ BASE_URL, setCurrUser }) => {
       });
       localStorage.setItem("_token", newUser.data.token);
       localStorage.setItem("_currUsername", formData.username);
-      window.location.reload(navigate(`/`));
+      refresh(navigate(`/`));
     };
     createUser();
 

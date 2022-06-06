@@ -3,3 +3,23 @@
   background-color: white;
   border: none;
 }
+#not-applied {
+  background: none;
+  border: none;
+  background-color: rgb(249, 254, 255);
+  box-shadow: 0px 1px 1px 0px grey;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.goBackButton {
+  background: none;
+  border: none;
+  background-color: #32cbf1;
+  box-shadow: 0px 2px 2px 0px grey;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

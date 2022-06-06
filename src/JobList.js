@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import JoblyApi from "./api";
 import "./JobList.css";
 
@@ -7,10 +6,6 @@ const JobList = ({ currentUser }) => {
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   const [jobsApplied, setJobsApplied] = useState(parsedJobs);
   const [jobs, setJobs] = useState([{}]);
-  console.log("WTF");
-  console.log(jobsApplied);
-  console.log(currentUser.applications);
-  console.log("WTF");
   useEffect(() => {
     const getJobs = async () => {
       let res = await JoblyApi.getAllJobs();
@@ -19,17 +14,13 @@ const JobList = ({ currentUser }) => {
     getJobs();
   }, []);
 
-  console.log(jobs);
-
   const checkIfAppliedToJob = (data1, data2) => {
     let jobsApplied = data1;
     let userApplications = data2;
     let results = userApplications.find((job) => job === jobsApplied);
     if (results) {
-      console.log(true);
       return true;
     } else {
-      console.log(false);
       return false;
     }
   };

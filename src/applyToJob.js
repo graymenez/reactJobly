@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import JoblyApi from "./api";
 
 const applyToJob = async (username, jobId) => {
