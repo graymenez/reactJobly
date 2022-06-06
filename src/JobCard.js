@@ -5,6 +5,7 @@ import applyToJob from "./applyToJob";
 import "./JobCard.css";
 const JobCard = ({ job, currentUser }) => {
   const navigate = useNavigate();
+  let userD = JSON.parse(localStorage.getItem("_userD"));
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   const [isLoading, setIsLoading] = useState(true);
   const [jobsApplied, setJobsApplied] = useState(parsedJobs);
@@ -36,7 +37,7 @@ const JobCard = ({ job, currentUser }) => {
       setIsLoading(false);
     }
   }, [job]);
-  const checkIfAppliedToJob = (data1, data2) => {
+  const checkIfAppliedToJob = (data1, data2 = userD.applications) => {
     let jobsApplied = data1;
     let userApplications = data2;
     let results = userApplications.find((job) => job === jobsApplied);
@@ -64,9 +65,19 @@ const JobCard = ({ job, currentUser }) => {
           ) : (
             <p className="JobCard-salary">Salary Not Specified</p>
           )}
-          {jobsApplied &&
-          job.id &&
-          checkIfAppliedToJob(job.id, jobsApplied.user.applications) ? (
+          {!jobsApplied ? (
+            job.id && checkIfAppliedToJob(job.id) ? (
+              <button id="applied" disabled>
+                Applied! ✔️
+              </button>
+            ) : (
+              <button id="not-applied" onClick={apply}>
+                Apply 🗎
+              </button>
+            )
+          ) : jobsApplied &&
+            job.id &&
+            checkIfAppliedToJob(job.id, jobsApplied.user.applications) ? (
             <button id="applied" disabled>
               Applied! ✔️
             </button>
