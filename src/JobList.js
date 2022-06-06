@@ -54,7 +54,7 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {!userD === null ? (
+              {userD === null ? (
                 <td className="JobList-table-body-status-applied">
                   <p>Login to Apply</p>
                 </td>
