@@ -13,6 +13,7 @@ function App() {
     if (token) {
       let setUser = async () => {
         let user = await getUser();
+        localStorage.setItem("_userD", JSON.stringify(user));
         setCurrentUser(user);
       };
       setUser();
