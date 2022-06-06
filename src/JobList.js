@@ -16,7 +16,6 @@ const JobList = ({ currentUser }) => {
     };
     getJobs();
   }, []);
-  console.log(userD.applications);
   const checkIfAppliedToJob = (data1, data2 = userD.applications) => {
     let jobsApplied = data1;
     let userApplications = data2;
