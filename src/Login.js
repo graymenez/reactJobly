@@ -27,7 +27,7 @@ const Login = ({ BASE_URL }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.post(`${BASE_URL}/auth/token`, {
+    let res = await axios.post(`${BASE_URL}auth/token`, {
       username: "coreyjimenez",
       password: "Cjscrew0942",
     });
