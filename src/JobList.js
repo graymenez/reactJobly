@@ -54,7 +54,6 @@ const JobList = ({ currentUser }) => {
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
               {!jobsApplied &&
-              !jobsApplied.user.applications &&
               !userD & !token &&
               !currentUser ? null : !jobsApplied ? (
                 checkIfAppliedToJob(job.id) &&
