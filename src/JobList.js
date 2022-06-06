@@ -5,7 +5,7 @@ import "./JobList.css";
 const JobList = ({ currentUser }) => {
   let parsedJobs = JSON.parse(localStorage.getItem("_jobsApplied"));
   const [jobsApplied, setJobsApplied] = useState(
-    parsedJobs ? parsedJobs : currentUser.applications
+    parsedJobs ? parsedJobs : currentUser
   );
   const [jobs, setJobs] = useState([{}]);
   useEffect(() => {
