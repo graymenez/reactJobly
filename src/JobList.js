@@ -51,12 +51,9 @@ const JobList = ({ currentUser }) => {
               <td className="JobList-table-body-link">
                 <a href={`/jobs/${job.id}`}>View Job</a>
               </td>
-              {!jobsApplied ? null : checkIfAppliedToJob(
-                  job.id,
-                  jobsApplied.user.applications
-                ) &&
-                job.id &&
-                currentUser.applications ? (
+              {checkIfAppliedToJob(job.id, jobsApplied.user.applications) &&
+              job.id &&
+              currentUser.applications ? (
                 <td className="JobList-table-body-status-applied">
                   <p>Applied✔️</p>
                 </td>
