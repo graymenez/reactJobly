@@ -1,6 +1,7 @@
 import React from "react";
 
 const CompanyCard = ({ companyDetails }) => {
+  //Uses companyDetails prop to render company card
   return (
     <div className="CompanyCard">
       <h1>{companyDetails.name}</h1>

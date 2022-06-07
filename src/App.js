@@ -6,17 +6,27 @@ function App() {
   const userToken = localStorage.getItem("_token");
   const [currentUser, setCurrentUser] = useState(false);
   const [token, setToken] = useState(userToken);
-  /** If there is a token, call getUser() funtion which will get the current users details
-   * Then save the current users details to currentUser state
-   */
+
   useEffect(() => {
     if (token) {
-      let setUser = async () => {
-        let user = await getUser();
-        localStorage.setItem("_userD", JSON.stringify(user));
-        setCurrentUser(user);
-      };
-      setUser();
+      // If there is a token, call getUser() funtion, which will get the current users details
+      try {
+        let setUser = async () => {
+          let user = await getUser();
+
+          localStorage.setItem("_userD", JSON.stringify(user));
+
+          setCurrentUser(user);
+          // Save the current users details to localstorage "_userD" && currentUser state.
+        };
+        setUser();
+      } catch (e) {
+        //Handles and throws any errors
+        throw new Error(e);
+      }
+    } else {
+      //If no token, clears localStorage of any left data
+      localStorage.clear();
     }
   }, []);
 

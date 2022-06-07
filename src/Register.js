@@ -36,13 +36,18 @@ const Register = ({ BASE_URL, setCurrUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const createUser = async () => {
-      let newUser = await axios.post(`${BASE_URL}auth/register`, {
-        username: formData.username,
-        password: formData.password,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-      });
+      let newUser = await axios.post(
+        BASE_URL === process.env.REACT_APP_BASE_URL
+          ? `${BASE_URL}auth/register`
+          : `${BASE_URL}/auth/register`,
+        {
+          username: formData.username,
+          password: formData.password,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+        }
+      );
       localStorage.setItem("_token", newUser.data.token);
       localStorage.setItem("_currUsername", formData.username);
       refresh(navigate(`/`));

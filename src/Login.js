@@ -28,10 +28,15 @@ const Login = ({ BASE_URL }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.post(`${BASE_URL}auth/token`, {
-      username: "coreyjimenez",
-      password: "Cjscrew0942",
-    });
+    let res = await axios.post(
+      BASE_URL === process.env.REACT_APP_BASE_URL
+        ? `${BASE_URL}auth/token`
+        : `${BASE_URL}/auth/token`,
+      {
+        username: "coreyjimenez",
+        password: "Cjscrew0942",
+      }
+    );
     let token = res.data.token;
     localStorage.setItem("_token", token);
     localStorage.setItem("_currUsername", formData.username);

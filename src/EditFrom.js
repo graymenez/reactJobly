@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import JoblyApi from "./api";
 import refresh from "./refresh";
 
+//Allows a user to edit their information if authorized to do so
 const EditFrom = ({ token, currentUser }) => {
   const INITIAL_STATE = {
     firstName: "",

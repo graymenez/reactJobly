@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JoblyApi from "./api";
+import { v4 } from "uuid";
 const Companies = ({ token, currentUser }) => {
   const [companies, setCompanies] = useState([{}]);
   const [isCompany, setIsCompany] = useState(true);
 
-  console.log(companies.length);
   useEffect(() => {
+    //Gets data on all companies and stores it in companies state. Rendering all companies on /companies.
     const getData = async () => {
       let data = await JoblyApi.getAllCompanies();
       setCompanies(data);
@@ -22,6 +23,7 @@ const Companies = ({ token, currentUser }) => {
         <ul>
           {companies.map((com, i) => (
             <div
+              key={v4()}
               style={{
                 listStyle: "none",
                 float: "left",
